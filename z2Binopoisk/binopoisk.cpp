@@ -16,6 +16,11 @@ int binoSearch(vector<int> &numbers, int controlPoint) // Ф-ция поиска
 
   while (true)
   {
+    if (summaryLength == 0) // если массив пустой,;
+    {
+      result += 0; // результат не меняется;
+      break;       // слом цикла;
+    };
     if (summaryLength == 1) // если оставшаяся длина == 1, то...;
     {
       if (numbers[leftPoint] > controlPoint) //...и если число под левой точкой больше контрольного...;
@@ -48,14 +53,14 @@ int binoSearch(vector<int> &numbers, int controlPoint) // Ф-ция поиска
       continue; // бежим в начало цикла;
     };
 
-    if ((leftPoint <= controlPoint) && (rightPoint <= controlPoint)) // если левая и правая точки равны или меньше контрольной
+    if ((numbers[leftPoint] <= controlPoint) && (numbers[rightPoint] <= controlPoint)) // если левая и правая точки равны или меньше контрольной
     {
       summaryLength = rightLength; // суммарная длина = правая длина;
       leftPoint = rightPoint;      // левая точка = правая точка;
     };
-  };
+  }; // дно цикла;
 
-  return result;
+  return result; // возвращаем результат после выхода из цикла;
 };
 
 /*Подпрограмма выполнения бинопоиска по массиву*/
@@ -67,6 +72,6 @@ int main()
   cout << "Вводим число: ";
   cin >> controlPoint;
 
-  cout << binoSearch(integers, controlPoint) << endl;
+  cout << binoSearch(integers, controlPoint) << endl; // сработка ф-ции;
   return 0;
 };
